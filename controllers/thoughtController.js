@@ -81,8 +81,8 @@ const thoughtController = {
             console.log(err)
             res.status(500).json(err)
         }
-    }
-} 
+    },
+ 
 async deleteReaction (req, res){
     try{
         const reaction = await Reaction.findOneAndDelete({ _id: req.params.reactionId });
@@ -98,7 +98,7 @@ async deleteReaction (req, res){
         res.status(500).json(err)
     }
 }
-
+}
 module.exports = thoughtController
 
 

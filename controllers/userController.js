@@ -1,6 +1,5 @@
 const { User, Friends } = require("../models");
 const userController = {
-  
   async getUsers(req, res) {
     try {
       const users = await User.find();
@@ -67,20 +66,20 @@ const userController = {
       res.status(500).json(err);
     }
   },
-};
-async deleteFriend(req, res) {
-  try {
-    const user = await Friend.findOneAndDelete({ _id: req.params.friendId });
 
-    if (!friend) {
-      return res.status(404).json({ message: "No friend with that ID" });
+  async deleteFriend(req, res) {
+    try {
+      const user = await Friend.findOneAndDelete({ _id: req.params.friendId });
+
+      if (!friend) {
+        return res.status(404).json({ message: "No friend with that ID" });
+      }
+
+      res.status(200).json(user);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
     }
-
-    res.status(200).json(user);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-}
-
+  },
+};
 module.exports = userController;
