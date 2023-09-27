@@ -1,5 +1,5 @@
 const { Schema, Types } = require('mongoose');
-const reactionSchema = new Schema({ 
+const friendSchema = new Schema({ 
   reactionId: {type: Schema.Types.ObjectId, default:()=>  new Types.ObjectId() },
   reactionBody: {type: String, required: true, maxlength: 280},
   userName: {type: String, required: true },
@@ -7,4 +7,4 @@ const reactionSchema = new Schema({
 
 }, {toJSON:{getter:true}, id:false})
 
-module.exports = reactionSchema
+module.exports = friendSchema

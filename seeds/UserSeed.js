@@ -14,8 +14,8 @@ connection.once('open', async () => {
 
    // Wait for the users to be inserted into the database
   await User.collection.insertOne({
-    userName: "Test",
-    email: "test@test.com"
+    userName: "Olivia",
+    email: "olivat@test.com"
   })
 
   console.timeEnd('seeding complete 🌱');
