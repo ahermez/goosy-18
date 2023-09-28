@@ -97,25 +97,25 @@ const thoughtController = {
 
   async deleteReaction(req, res) {
     try {
-      const reaction = await Reaction.findOneAndDelete(
-        { _id: req.params.reactionId },
-        { $pull: { tags: { tagId: req.params.tagId } } },
+      const thought = await Thought.findOneAndUpdate(
+        { _id: req.params.thoughtId },
+        { $pull: { reaction: { reactionId: req.params.reactionId } } },
         { runValidators: true, new: true }
       );
 
-      if (!reaction) {
-        return res.status(404).json({ message: "No reaction with that ID" });
+      if (!thought) {
+        return res.status(404).json({ message: "No thought with that ID" });
       }
 
       //   res.status(200).json(reaction);
       // } catch (err) {
       //   console.log(err);
       //   res.status(500).json(err);
-      if (!reaction) {
-        return res.status(404).json({ message: "No reaction with this id!" });
-      }
+      // if (!reaction) {
+      //   return res.status(404).json({ message: "No reaction with this id!" });
+      // }
 
-      res.json(reaction);
+      res.json(thought);
     } catch (err) {
       res.status(500).json(err);
     }
